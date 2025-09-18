@@ -1,0 +1,85 @@
+{
+  "quickStart": [
+    {
+      "step": 1,
+      "title": "安装扩展",
+      "description": "从浏览器应用商店下载并安装 Pinwheel 扩展，安装完成后，您将在浏览器工具栏看到 Pinwheel 图标。"
+    },
+    {
+      "step": 2,
+      "title": "首次使用设置",
+      "description": "点击浏览器工具栏中的 Pinwheel 图标，按照提示完成初始设置，授予必要的权限以访问您的标签、书签和历史记录。"
+    },
+    {
+      "step": 3,
+      "title": "配置首选项",
+      "description": "在 Pinwheel 设置界面中，您可以自定义快捷键、主题颜色和其他个性化选项，根据自己的喜好调整扩展功能。"
+    },
+    {
+      "step": 4,
+      "title": "开始使用核心功能",
+      "description": "尝试使用一体化搜索、标签管理和短链功能，体验 Pinwheel 带来的高效浏览体验。"
+    }
+  ],
+  "keyboardShortcuts": [
+    {
+      "shortcut": "Alt+P",
+      "description": "打开 Pinwheel 主界面"
+    },
+    {
+      "shortcut": "Alt+K",
+      "description": "快速搜索"
+    },
+    {
+      "shortcut": "Alt+L",
+      "description": "管理短链"
+    },
+    {
+      "shortcut": "Alt+T",
+      "description": "显示标签管理器"
+    },
+    {
+      "shortcut": "Alt+H",
+      "description": "查看使用统计"
+    },
+    {
+      "shortcut": "Escape",
+      "description": "关闭 Pinwheel 界面"
+    }
+  ],
+  "advancedFeatures": [
+    {
+      "title": "自定义标签组",
+      "description": "您可以创建自定义标签组来更好地组织您的浏览内容。打开标签管理界面，点击'新建标签组'按钮，输入名称并选择要添加的标签。",
+      "steps": [
+        "打开 Pinwheel 主界面",
+        "点击标签管理选项卡",
+        "点击'新建标签组'按钮",
+        "为标签组命名并选择要添加的标签",
+        "点击'保存'按钮完成创建"
+      ]
+    },
+    {
+      "title": "生成自定义短链",
+      "description": "Pinwheel 允许您为常用网站创建自定义短链接，方便快速访问。",
+      "steps": [
+        "在浏览器中打开目标网页",
+        "点击 Pinwheel 图标打开主界面",
+        "点击'生成短链'按钮",
+        "自定义短链后缀（可选）",
+        "点击'创建'按钮完成短链生成",
+        "使用'复制'按钮复制短链到剪贴板"
+      ]
+    },
+    {
+      "title": "数据导出与导入",
+      "description": "定期导出您的 Pinwheel 数据以备份或在不同设备间迁移数据。",
+      "steps": [
+        "打开 Pinwheel 设置界面",
+        "点击'数据管理'选项",
+        "选择'导出数据'保存 JSON 文件",
+        "在其他设备上，选择'导入数据'并选择之前保存的 JSON 文件"
+      ]
+    }
+  ]
+}

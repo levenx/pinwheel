@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "title": "浏览器插件性能优化全面指南",
+    "excerpt": "深入探讨浏览器插件性能优化的各种手段，包括按需加载、Content Script优化、消息通信优化、内存管理和高级优化技巧，帮助开发者构建更高效的插件。",
+    "date": "2024-07-15",
+    "image": "/images/blog-performance-optimization.jpg",
+    "category": "技术指南"
+  }
+]

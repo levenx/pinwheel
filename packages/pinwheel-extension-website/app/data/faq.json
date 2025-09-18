@@ -1,0 +1,38 @@
+[
+  {
+    "question": "为什么我看不到某些历史记录？",
+    "answer": "Pinwheel 只能访问浏览器授予权限的历史记录。请确保您已在浏览器设置中允许 Pinwheel 访问您的完整浏览历史。"
+  },
+  {
+    "question": "短链会同步到云端吗？",
+    "answer": "不会，所有短链都仅存储在您的本地设备上，确保您的隐私安全。"
+  },
+  {
+    "question": "Pinwheel 支持哪些浏览器？",
+    "answer": "Pinwheel 目前支持 Chrome、Firefox、Edge 和 Safari 等主流浏览器。"
+  },
+  {
+    "question": "如何备份我的短链数据？",
+    "answer": "您可以在设置中导出短链数据为 JSON 文件，以便在需要时进行备份或迁移。"
+  },
+  {
+    "question": "Pinwheel 会占用很多系统资源吗？",
+    "answer": "不会，Pinwheel 设计为轻量级扩展，采用标签休眠等技术来优化资源使用，对系统性能影响极小。"
+  },
+  {
+    "question": "如何恢复已删除的短链接？",
+    "answer": "一旦删除，短链接无法直接恢复。建议定期导出备份数据，以便在意外删除时能够恢复。"
+  },
+  {
+    "question": "Pinwheel 支持哪些语言？",
+    "answer": "Pinwheel 目前支持中文和英文界面，我们计划在未来添加更多语言支持。"
+  },
+  {
+    "question": "如何联系技术支持？",
+    "answer": "您可以通过浏览器扩展商店页面的支持链接或在 GitHub 上提交 Issues 来联系我们的技术支持团队。"
+  },
+  {
+    "question": "Pinwheel 是免费使用的吗？",
+    "answer": "是的，Pinwheel 是一款完全免费的开源浏览器扩展，没有任何付费功能或订阅计划。"
+  }
+]

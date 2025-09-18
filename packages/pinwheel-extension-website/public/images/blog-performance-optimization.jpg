@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f4f8"/>
+  <rect x="100" y="100" width="600" height="200" fill="#e1ebf5" rx="10"/>
+  <circle cx="400" cy="200" r="50" fill="#3b82f6"/>
+  <path d="M370 190 L400 150 L430 190 M370 210 L400 250 L430 210" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#374151">浏览器插件性能优化</text>
+</svg>

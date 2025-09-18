@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "张明",
+    "role": "前端开发者",
+    "avatar": "https://picsum.photos/id/1005/40/40",
+    "content": "Pinwheel 浏览器扩展极大地提高了我的工作效率，标签管理功能非常强大，让我的浏览器界面焕然一新。",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "李华",
+    "role": "产品经理",
+    "avatar": "https://picsum.photos/id/1012/40/40",
+    "content": "作为一个经常需要进行多任务处理的人，Pinwheel 的短链功能和书签管理让我的工作变得更加有序。",
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "name": "王芳",
+    "role": "学生",
+    "avatar": "https://picsum.photos/id/1027/40/40",
+    "content": "学习时需要打开很多资料页面，Pinwheel 帮助我很好地组织这些页面，查找起来非常方便。",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "赵强",
+    "role": "自由职业者",
+    "avatar": "https://picsum.photos/id/1074/40/40",
+    "content": "界面简洁美观，功能实用，是我每天必用的浏览器扩展之一。",
+    "rating": 4
+  }
+]
