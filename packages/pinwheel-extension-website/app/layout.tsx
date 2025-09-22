@@ -10,31 +10,6 @@ export const metadata = {
   // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 };
 
-// 自定义导航栏组件
-const CustomNavbar = () => (
-  <nav className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 sticky top-0 z-50">
-    <div className="max-w-7xl mx-auto flex justify-between items-center">
-      <div className="flex items-center space-x-2">
-        <span className="text-blue-600 font-bold text-xl">Pinwheel</span>
-      </div>
-      <div className="hidden md:flex items-center space-x-8">
-        <a
-          href="/download"
-          className="text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
-        >
-          下载
-        </a>
-        <a
-          href="mailto:contact@pinwheel.com"
-          className="text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
-        >
-          联系我们
-        </a>
-      </div>
-    </div>
-  </nav>
-);
-
 const navbar = (
   <Navbar
     logo={

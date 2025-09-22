@@ -9,7 +9,9 @@ import { useState, useEffect, useRef } from "react";
 declare global {
   interface Window {
     Pagefind?: {
-      create: () => Promise<any>;
+      create: () => Promise<{
+        search: (term: string) => Promise<SearchResult[]>;
+      }>;
     };
   }
 }
@@ -34,80 +36,83 @@ export default function NotFound() {
     const initPagefind = async () => {
       try {
         // 检查是否在浏览器环境中
-        if (typeof window === 'undefined') return;
-        
+        if (typeof window === "undefined") return;
+
         // 开发环境下，我们可能没有pagefind索引，使用模拟数据
-        if (process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === "development") {
           // 模拟Pagefind实例，用于开发环境测试
           pagefindRef.current = {
             search: async (term: string) => {
               // 模拟搜索结果
               const mockData = [
                 {
-                  url: '/',
-                  title: 'Pinwheel浏览器扩展',
-                  excerpt: 'Pinwheel浏览器扩展主页 - 一体化搜索标签、书签和历史记录'
+                  url: "/",
+                  title: "Pinwheel浏览器扩展",
+                  excerpt:
+                    "Pinwheel浏览器扩展主页 - 一体化搜索标签、书签和历史记录",
                 },
                 {
-                  url: '/docs',
-                  title: '使用文档',
-                  excerpt: '使用文档 - 了解如何安装和使用Pinwheel扩展'
+                  url: "/docs",
+                  title: "使用文档",
+                  excerpt: "使用文档 - 了解如何安装和使用Pinwheel扩展",
                 },
                 {
-                  url: '/downloads',
-                  title: '下载扩展',
-                  excerpt: '下载页面 - 获取Pinwheel浏览器扩展的最新版本'
-                }
+                  url: "/downloads",
+                  title: "下载扩展",
+                  excerpt: "下载页面 - 获取Pinwheel浏览器扩展的最新版本",
+                },
               ];
-              
+
               // 过滤搜索结果
               const lowerTerm = term.toLowerCase();
-              const filteredResults = mockData.filter(item => 
-                item.title.toLowerCase().includes(lowerTerm) || 
-                item.excerpt.toLowerCase().includes(lowerTerm)
+              const filteredResults = mockData.filter(
+                (item) =>
+                  item.title.toLowerCase().includes(lowerTerm) ||
+                  item.excerpt.toLowerCase().includes(lowerTerm)
               );
-              
+
               // 转换为Pagefind期望的格式
-              const mockResults = filteredResults.map(item => ({
+              const mockResults = filteredResults.map((item) => ({
                 url: item.url,
                 excerpt: async () => item.excerpt,
-                data: async (field: string) => field === 'title' ? item.title : ''
+                data: async (field: string) =>
+                  field === "title" ? item.title : "",
               }));
-              
+
               return {
-                results: mockResults
+                results: mockResults,
               };
-            }
+            },
           };
         } else {
           // 生产环境下，动态加载Pagefind脚本
-          const pagefindScript = document.createElement('script');
-          pagefindScript.src = '/_pagefind/pagefind.js';
-          
+          const pagefindScript = document.createElement("script");
+          pagefindScript.src = "/_pagefind/pagefind.js";
+
           // 使用Promise包装脚本加载，更可靠地处理加载状态
           await new Promise((resolve, reject) => {
             pagefindScript.onload = resolve;
             pagefindScript.onerror = reject;
             document.body.appendChild(pagefindScript);
           });
-          
+
           if (window.Pagefind) {
             pagefindRef.current = await window.Pagefind.create();
           } else {
-            throw new Error('Pagefind脚本已加载但window.Pagefind不存在');
+            throw new Error("Pagefind脚本已加载但window.Pagefind不存在");
           }
-          
+
           return () => {
             document.body.removeChild(pagefindScript);
           };
         }
       } catch (error) {
-        console.error('Pagefind初始化失败:', error);
+        console.error("Pagefind初始化失败:", error);
         // 即使初始化失败，我们也可以提供模拟搜索功能
         pagefindRef.current = {
           search: async () => ({
-            results: []
-          })
+            results: [],
+          }),
         };
       }
     };
@@ -117,7 +122,7 @@ export default function NotFound() {
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!searchTerm.trim() || !pagefindRef.current) {
       setSearchResults([]);
       setShowResults(false);
@@ -126,7 +131,7 @@ export default function NotFound() {
 
     setIsSearching(true);
     setShowResults(true);
-    
+
     try {
       const results = await pagefindRef.current.search(searchTerm);
       if (results) {
@@ -135,8 +140,8 @@ export default function NotFound() {
             url: result.url,
             excerpt: await result.excerpt(),
             meta: {
-              title: await result.data('title') || '无标题'
-            }
+              title: (await result.data("title")) || "无标题",
+            },
           }))
         );
         setSearchResults(formattedResults);
@@ -144,7 +149,7 @@ export default function NotFound() {
         setSearchResults([]);
       }
     } catch (error) {
-      console.error('搜索失败:', error);
+      console.error("搜索失败:", error);
       setSearchResults([]);
     } finally {
       setIsSearching(false);
@@ -200,7 +205,7 @@ export default function NotFound() {
                 disabled={isSearching}
                 className="absolute right-2 top-2 bottom-2 px-6 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {isSearching ? '搜索中...' : '搜索'}
+                {isSearching ? "搜索中..." : "搜索"}
               </button>
             </div>
           </form>
@@ -211,7 +216,9 @@ export default function NotFound() {
               {isSearching ? (
                 <div className="text-center py-8">
                   <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-600 mb-4"></div>
-                  <p className="text-slate-600 dark:text-slate-300">正在搜索相关内容...</p>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    正在搜索相关内容...
+                  </p>
                 </div>
               ) : searchResults.length > 0 ? (
                 <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6">
@@ -240,10 +247,12 @@ export default function NotFound() {
                 </div>
               ) : (
                 <div className="text-center py-8 bg-white dark:bg-slate-800 rounded-xl shadow-md">
-                  <p className="text-slate-600 dark:text-slate-300">没有找到与 "{searchTerm}" 相关的内容</p>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    没有找到与 "{searchTerm}" 相关的内容
+                  </p>
                   <button
                     onClick={() => {
-                      setSearchTerm('');
+                      setSearchTerm("");
                       setShowResults(false);
                     }}
                     className="mt-4 text-blue-600 dark:text-blue-400 hover:underline"
